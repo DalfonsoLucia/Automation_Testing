@@ -1,5 +1,15 @@
+# Node
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+package-lock.json
+
+# Playwright outputs
+test-results/
+playwright-report/
+
+# Logs / env
+*.log
+.env
+
+# TypeScript (solo per Playwright_TypeScript)
+dist/
+*.tsbuildinfo

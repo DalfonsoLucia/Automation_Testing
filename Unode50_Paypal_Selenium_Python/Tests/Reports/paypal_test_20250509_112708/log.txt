@@ -1,0 +1,22 @@
+Retrieve token PayPal
+Create PayPal order
+Open PayPal
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\open_paypal.png
+Login PayPal
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\login_paypal.png
+Change shipping address
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\modify_address.png
+Select 'Paga in 3 rate'
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\selected_lay_by_payment.png
+Enter tax number and phone
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\enter_tax_number_and_phone.png
+Modify billing address
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\modify_billing_address.png
+Select Visa card
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\select_Visa_card.png
+Final click on Continue button
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\click_final_button_to_payment.png
+Final click made
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\final_click_made.png
+Redirect correct to UNOde50 site
+📸 Screenshot salvato: Reports\paypal_test_20250509_112708\final_page.png

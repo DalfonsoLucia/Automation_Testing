@@ -1,0 +1,25 @@
+# Java
+*.class
+*.log
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Reports
+/test-output/
+/surefire-reports/
+/extent-reports/
+screenshots/
