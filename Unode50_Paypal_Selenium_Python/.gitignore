@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Test reports / logs / screenshots
+Reports/
+paypal_debug/
+*.log
+*.tmp
+*.html
+
+# Credentials / sensitive configs
+*.env
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db

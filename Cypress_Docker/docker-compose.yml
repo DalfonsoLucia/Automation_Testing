@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  cypress_live_reload:
+      image: cypress_live_reload
+      build:
+          context: .
+          dockerfile: ./Dockerfile
+      volumes: 
+        - ./dockerReports:/app/cypress/results
+        - ./dockerReports:/app/mochawesome-report
+        - ./src:/app/src
+        - ./cypress:/app/cypress

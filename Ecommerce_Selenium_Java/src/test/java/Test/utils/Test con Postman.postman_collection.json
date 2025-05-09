@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "68508f88-509c-4600-819c-6a903202210a",
+		"name": "Test con Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24230347"
+	},
+	"item": [
+		{
+			"name": "Test 1 Get ok con body non vuoto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200, la get all funziona\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body non vuoto!\", function () {\r",
+							"    pm.response.to.not.be.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 2 Get ok, modifica json e visualizzazione ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Step 1 - Invia una richiesta HTTP GET all'endpoint \"https://jsonplaceholder.typicode.com/users\"\r",
+							"pm.test(\"GET /users endpoint returns 200 OK and non-empty response body\", function () {\r",
+							"    pm.sendRequest(\"GET\", \"https://jsonplaceholder.typicode.com/users\", function (err, response) {\r",
+							"        if (err) {\r",
+							"            console.log(err);\r",
+							"        } else {\r",
+							"            // Step 2 - Verifica che lo stato della risposta sia \"200 OK\" e il corpo non sia vuoto\r",
+							"            pm.expect(response.status).to.equal(200);\r",
+							"            pm.expect(response.json()).to.not.be.empty;\r",
+							"\r",
+							"            // Step 3 - Verifica che l'attributo \"id\" non sia nullo per ogni oggetto della lista degli utenti\r",
+							"            _.each(response.json(), function(user) {\r",
+							"                pm.test(\"User ID is not null\", function () {\r",
+							"                    pm.expect(user.id).to.not.be.null;\r",
+							"                });\r",
+							"            });\r",
+							"            \r",
+							"            // Step 4 - Modifica l'utente con id 1 della lista degli utenti e crea un nuovo oggetto utente con un nuovo ID (size della lista degli utenti + 1), un nuovo nome \"Gianfilippo Bellissimo\" e gli altri valori degli attributi dell'utente con id 1.\r",
+							"            var userToModify = _.find(response.json(), {id: 1});\r",
+							"            var newUser = {\r",
+							"                \"id\": response.json().length + 1,\r",
+							"                \"name\": \"Gianfilippo Bellissimo\",\r",
+							"                \"username\": userToModify.username,\r",
+							"                \"email\": userToModify.email,\r",
+							"                \"address\": userToModify.address,\r",
+							"                \"phone\": userToModify.phone,\r",
+							"                \"website\": userToModify.website,\r",
+							"                \"company\": userToModify.company\r",
+							"            };\r",
+							"            \r",
+							"            // Step 5 - Invia una richiesta HTTP POST all'endpoint \"https://jsonplaceholder.typicode.com/users\", includendo il nuovo oggetto utente creato nel corpo della richiesta.\r",
+							"            pm.sendRequest({\r",
+							"                url: \"https://jsonplaceholder.typicode.com/users\",\r",
+							"                method: \"POST\",\r",
+							"                header: { \"Content-Type\": \"application/json\" },\r",
+							"                body: {\r",
+							"                    mode: \"raw\",\r",
+							"                    raw: JSON.stringify(newUser)\r",
+							"                }\r",
+							"            }, function (err, response) {\r",
+							"                if (err) {\r",
+							"                    console.log(err);\r",
+							"                } else {\r",
+							"                    // Step 6 - Verifica che lo stato della risposta sia \"201 Created\" e l'attributo \"id\" del nuovo utente non sia nullo.\r",
+							"                    pm.expect(response.status).to.equal(201);\r",
+							"                    pm.expect(response.json().id).to.not.be.null;\r",
+							"                    \r",
+							"                    // Step 7 - Estrai l'ID del nuovo utente dalla risposta e stampalo sulla console.\r",
+							"                    var newUserId = response.json().id;\r",
+							"                    console.log(\"New user ID created: \" + newUserId);\r",
+							"                }\r",
+							"            });\r",
+							"        }\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 3 parametrizzazione Url",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "/users"
+		}
+	]
+}

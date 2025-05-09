@@ -1,0 +1,179 @@
+###################################################################################################################
+
+TEST 1 - UNIT TEST
+Creare una rubrica con comandi CRUD suddivisi tra di loro
+Controllare che l'aggiunta di un nuovo utente vada a buon fine
+Controllare che la modifica dell'utente appena aggiunto vada a buon fine
+Controllare che la rimozione dell'utente appena modificato vada a buon fine
+Controllare che la modifica di un utente inesistente ritorni errore
+Controllare che la rimozione di un utente inesistente ritorni errore
+
+###################################################################################################################
+
+TEST 2 - SELENIUM
+Collegarsi al sito : https://automationteststore.com
+Controllare che tutte le sezioni di acquisto siano cliccabili
+Selezionare la prima sezione di acquisto (APPAREL & ACCESSORIES)
+Selezionare la taglia
+Inserire nel carrello il primo elemento una volta
+Selezionare la seconda sezione di acquisto (MAKEUP)
+Inserire nel carrello il terzo elemento 3 volte
+Selezionare il carrello
+Controllare che il prezzo visualizzato nella home sia uguale al sub-totale nella sezione del carrello
+Controllare che la somma del prezzo compreso di spedizione sia uguale al totale nel carrello
+Rimuovere tutti gli elementi dal carrello
+Controllare che il totale nella home sia uguale a 0
+Controllare che nella sezione carrello non ci siano più elementi
+Controllare che nella sezione carrello sia presente il testo "Your shopping cart is empty!"
+
+
+TEST 3 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+cliccare sulla ricerca
+scrivere makeUp
+selezionare il secondo item recuperato
+cliccare su add to cart
+fare check che sul carrello ho 1 elemento
+rimuovere l'elemento dal carrello
+fare check che sul carrello ho 0 elementi
+
+
+TEST 4 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+cliccare su books
+salvare su un elemento il primo item recuperato
+cambiare ordine di visualizzazione mettendo "rating lowest"
+salvare su un elemento il primo item recuperato
+controllare che il primo item sia diverso dal secondo item
+
+
+TEST 5 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+fare uno scroll in basso alla pagina web
+cliccare su "site map"
+trovare il testo "shampoo" e cliccare
+cliccare l'item con test "Eau Parfumee au The Vert Shampoo"
+controllare che il model sia 522823
+controllare che ci sia il button add to cart
+controllare che ci sia il button print
+controllare che la description non sia vuota
+
+
+TEST 6 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+creare un nuovo account
+controllare che la creazione sia avvenuta con successo
+
+
+TEST 7 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+cliccare su specials
+controllare che ci sia l'item "sale" negli elementi recuperati
+
+
+TEST 8 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+cliccare sulla barra di ricerca
+scrivere "qwerty"
+controllare che nessun risultato sia recuperato
+
+
+TEST 9 - SELENIUM
+collegarsi al sito https://automationteststore.com/
+cliccare su men
+cambiare ordine di visualizzazione degli elementi recuperati
+controllare che adesso si veda il button "view" ed il button "write review"
+aggiungere il primo elemento al carrello
+aprire il carrello
+salvare il prezzo in una variabile
+modificare la quantity da 1 a 2
+cliccare sul button update
+salvare il nuovo prezzo in una seconda variabile
+controllare che il primo prezzo sia minore del secondo prezzo
+rimuovere i due item inseriti nel carrello
+controllare che compaia l'elemento col testo "your shopping cart is empty!"
+
+- Dato che ogni test prevede di collegarsi ad un unico link, salvarlo in una variabile e fare in modo che il collegamento avvenga PRIMA DI OGNI TEST tramite l'apposito metodo di junit
+- Gestire che, per ogni test, se qualcosa vada in errore (es. internet non disponibile, elementi non recuperati, ecc..) venga stampato un errore dedicato con screenshot dedicato
+- Fare in modo che, DOPO AVER CONCLUSO TUTTI I TEST tramite l'apposito metodo di junit, chrome venga chiuso per avere una situazione pulita e non avere istanze del browser rimasti aperti
+- Prevedere che chrome venga aperto in modalita TUTTO SCHERMO
+
+###################################################################################################################
+
+TEST 10 - SELENIUM
+Andare su google
+Scrivere sul campo di ricerca “samsung s23”
+Selezionare il risultato che come URL abbia -> https://www.samsung.com/galaxy/s23
+E come titolo -> Nuovo Samsung Galaxy S23 - 30% Sconto Su Samsung Care+
+Una volta caricata la pagina cliccare su “galaxy s23 | s23+”
+Controllare che il modello sia corretto (galaxy s23+)
+Controllare che la memoria sia corretta (512 gb | 8 gb)
+Opzioni di pagamento sia selezionato ACQUISTA
+Controllare che nella sezione del carrello il totale sia 1349,00 €
+Controllare che il modello sia rimasto quello selezionato in partenza (Galaxy S23+)
+
+
+Link Utili:
+Selenium -> https://www.selenium.dev/documentation/
+JUnit -> https://junit.org/junit5/docs/current/user-guide/
+LifeCycle JUnit -> https://howtodoinjava.com/junit5/junit-5-test-lifecycle/
+Parametrizzare Chrome con Selenium -> https://www.guru99.com/chrome-options-desiredcapabilities.html
+
+###################################################################################################################
+
+TEST 1 - POSTMAN
+Recuperare le informazioni dall'URL: https://jsonplaceholder.typicode.com/users
+Controllare che la risposta vada in success
+Controllare che il body della response non sia vuoto
+
+
+TEST 2 - POSTMAN
+Recuperare le informazioni dall'URL: https://jsonplaceholder.typicode.com/users
+Prendere un item dalla response e modificarlo, creandone uno nuovo
+Controllare che la risposta sia "Created" con relativo codice
+Controllare che nella response venga mostrato l' ID dell'elemento appena creato
+
+
+TEST 3 - POSTMAN
+Parametrizzare l'URL: https://jsonplaceholder.typicode.com/users dandogli valore "url"
+Nella barra di postman richiamare quindi "url"
+Controllare che i risultati siano stati recuperati
+
+
+TEST 4 - POSTMAN
+Creare una collection postman e come nome dargli "Test Postman"
+Salvare nella collection i test 2 e 3 compresivi di check
+Iterare la collection per 5 volte con un delay di 5000ms
+
+###################################################################################################################
+
+FARE REPORT CON EXTENTREPORTS
+
+1. Inserire dipendenza Maven
+        <dependency>
+             <groupId>com.aventstack</groupId>
+             <artifactId>extentreports</artifactId>
+             <version>4.1.5</version>
+        </dependency>
+
+2. Crea una classe TestReport come quella già fatta
+
+3. Istanzia: private TestReport testReport;
+
+4. Aggiungere questo alla classe da testare:
+
+ @BeforeEach
+ public void setUpReport() {
+ testReport = new TestReport();
+ testReport.setupReport();
+ }
+
+5. Segui questo schema inserendolo nel test dove vuoi mettere i report:
+
+   testReport.startTest("Test Name", "Test Description");
+   // ...
+   testReport.pass("Step 1 Passed");
+   // ...
+   testReport.fail("Step 2 Failed", "screenshot.png");
+   // ...
+   testReport.tearDown();

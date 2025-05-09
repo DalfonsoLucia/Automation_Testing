@@ -1,0 +1,35 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "testAPI": "npx playwright test --grep /@API/ --reporter=line,allure-playwright",
+    "testWeb": "npx playwright test --grep /@Web/ --reporter=line,allure-playwright",
+    "generateReport": "allure generate ./allure-results --clean",
+    "clean": "rimraf ./allure-results",
+    "test": "npx playwright test",
+    "startTestAPI": "npm run testAPI && npm run generateReport && npm run openReport",
+    "startTestWeb": "npm run testWeb && npm run generateReport && npm run openReport",
+    "startTestAPIReport": "npm run clean && npm run testAPI && npm run generateReport && npm run openReport",
+    "startTestWebReport": "npm run clean && npm run testWeb && npm run generateReport && npm run openReport",
+    "openReport": "allure open ./allure-report",
+    "testConfigCustom": "npx playwright test --config=playwright.configCustom.js --project=chrome",
+    "cucumberValidation": "npx cucumber-js --tags '@Validation' --retry 1 --exit --format html:cucumber-report.html",
+    "cucumberRegression": "npx cucumber-js --tags '@Regression' --retry 1 --exit --format html:cucumber-report.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "*",
+    "@playwright/test": "^1.40",
+    "@types/node": "^22.7.4",
+    "allure-playwright": "^3.0.6",
+    "rimraf": "^6.0.1",
+    "shx": "^0.3.4"
+  },
+  "dependencies": {
+    
+  }
+}

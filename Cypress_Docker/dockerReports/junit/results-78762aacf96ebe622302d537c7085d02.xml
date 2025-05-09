@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="2.008" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-08-09T13:58:03" tests="0" file="cypress/e2e/secondTest.spec.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend" timestamp="2023-08-09T13:58:03" tests="1" time="1.992" failures="0">
+    <testcase name="Test with backend verify usa can log out successfully" time="1.982" classname="verify usa can log out successfully">
+    </testcase>
+  </testsuite>
+</testsuites>

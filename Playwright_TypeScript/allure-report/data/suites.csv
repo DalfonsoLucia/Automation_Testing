@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","7970","@Web Login with right credentials and first element found","","Mon Nov 04 15:54:53 CET 2024","passed","Mon Nov 04 15:55:01 CET 2024","","UIBasicstest.spec.js","",""
+"","7776","@Web Client App Login, add ADIDAS ORIGINAL to Cart and make a Order","","Mon Nov 04 15:55:03 CET 2024","passed","Mon Nov 04 15:55:11 CET 2024","","ClientAppPOM.spec.js","",""
+"","5255","@Web Popup Validations","","Mon Nov 04 15:54:53 CET 2024","passed","Mon Nov 04 15:54:58 CET 2024","","MoreValidations.spec.js","",""
+"","9056","@Web Client App Login, add ZARA COAT 3 to Cart and make a Order","","Mon Nov 04 15:54:53 CET 2024","passed","Mon Nov 04 15:55:02 CET 2024","","ClientAppPOM.spec.js","",""

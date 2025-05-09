@@ -1,0 +1,123 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "ecommerce-validations;placing-the-order",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Placing the Order",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1081314100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "A login to Ecommerce application with \"luckystone@gmail.com\" and \"Luckystone90\"",
+            "match": {
+              "location": "features\\step_definitions\\stepHooks.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3513183200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "Add \"ZARA COAT 3\" to Cart",
+            "match": {
+              "location": "features\\step_definitions\\stepHooks.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1582446598
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Verify \"ZARA COAT 3\" is displayed in the Cart",
+            "match": {
+              "location": "features\\step_definitions\\stepHooks.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 210817198
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "Enter valid details and Place the Order",
+            "match": {
+              "location": "features\\step_definitions\\stepHooks.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1213655097
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "Verify order in present in the OrderHistory",
+            "match": {
+              "location": "features\\step_definitions\\stepHooks.js:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 460284199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Close Ecommerce",
+            "match": {
+              "location": "features\\step_definitions\\stepHooks.js:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 608700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 494400
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Regression",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "ecommerce-validations",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Ecommerce validations",
+    "tags": [],
+    "uri": "features\\Ecommerce.feature"
+  }
+]

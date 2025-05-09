@@ -1,0 +1,20 @@
+# Java
+*.class
+target/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# Node.js
+node_modules/
+dist/
+
+# VSCode / IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,79 @@
+{
+  "name": "angular-realworld",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint --force",
+    "prepare": "husky install",
+    "delete:reports": "rm -r cypress/results/* || true",
+    "prereport": "npm run delete:reports",
+    "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
+    "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
+    "cypress:run": "npm run prereport && npx cypress run",
+    "cypress:open": "npx cypress open",
+    "__comment": "QUESTO COMANDO È COMMENTATO_cypress:e2e: start-test start http-get://localhost:4200 cypress:run; npm run junit:merge; npm run mochawesome:merge",
+    "cypress:e2e": "start-test \"npm start\" http-get://localhost:4200 \"npm run prereport && npx cypress run && npm run junit:merge && npm run mochawesome:merge\"",
+
+    "cypress_docker:open": "start-test \"npm start\" http-get://localhost:4200 \"npm run prereport && npx cypress open\"",
+
+    "cypress_open:e2e": "start-test start http-get://localhost:4200 cypress:open",
+    "cy:open_dev": "npx cypress open --env username=dalfonsolucia2@live.it,pword=Luckystark90!",
+    "cy:open_qa": "npx cypress open --env username=lucyTest@live.it,password=Luckystark90",
+    "cy:open_process": "npx cypress open --env username=$DB_USERNAME,password=$PASSWORD"
+  },
+  "engines": {
+    "node": "^14.20.0 || ^16.13.0 || ^18.10.0"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "15.2.3",
+    "@angular/common": "15.2.3",
+    "@angular/compiler": "15.2.3",
+    "@angular/core": "15.2.3",
+    "@angular/forms": "15.2.3",
+    "@angular/platform-browser": "15.2.3",
+    "@angular/platform-browser-dynamic": "15.2.3",
+    "@angular/router": "15.2.3",
+    "@rx-angular/cdk": "15.0.0",
+    "@rx-angular/template": "15.2.0",
+    "dotenv": "^16.3.1",
+    "marked": "^4.2.12",
+    "rxjs": "^7.4.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.12.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.2.4",
+    "@angular/cli": "^15.2.4",
+    "@angular/compiler-cli": "15.2.3",
+    "@types/jasmine": "~4.3.0",
+    "@types/marked": "^4.0.8",
+    "cypress": "^12.17.3",
+    "cypress-multi-reporters": "^1.6.3",
+    "husky": "^8.0.3",
+    "jasmine-core": "~4.5.0",
+    "junit": "^1.4.9",
+    "karma": "~6.4.1",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "lint-staged": "^13.2.2",
+    "merge": "^2.1.1",
+    "mocha-junit-reporter": "^2.2.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "nodemon": "3.0.1",
+    "prettier": "^2.8.8",
+    "start-server-and-test": "^2.0.0",
+    "typescript": "~4.8.2"
+  },
+  "lint-staged": {
+    "*.{ts,html,css,json,md}": "prettier --write"
+  }
+}
