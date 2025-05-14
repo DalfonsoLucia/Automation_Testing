@@ -55,7 +55,7 @@ test('@Web Login with right credentials and first element found', async ({browse
         await signIn.click();
 
         console.log(await cardTitles.first().textContent()); //restituisce il primo elemento trovato
-        console.log(await cardTitles.nth(1).textContent()); ////restituisce il secondo elemento trovato all'interno di un array con indice 0
+        console.log(await cardTitles.nth(1).textContent()); //restituisce il secondo elemento trovato all'interno di un array con indice 0
     }); 
 
 test('Login with right credentials and keep all elements found after first element', async ({browser})=>
