@@ -40,7 +40,7 @@ test('Accept all cookies and login account', async ({page}) => {
     expect(page.locator('h2[class="pull-left profile-header"]')).toContainText("I miei dati personali");
 });
 
-test.only("make a order after login", async ({page}) => {
+test("make a order after login", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "make a order"})
 
     await page.goto("https://www.unode50.com/eu/it_IT/home");
