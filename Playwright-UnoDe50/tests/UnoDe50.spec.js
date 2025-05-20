@@ -106,8 +106,43 @@ test.only("make a order after login", async ({page}) => {
     // Payment Side
     // Choose Method Payment - card
     await page.locator('li[data-method-id="AdyenComponent"]').click()
-    //Inserire dati bancari
 
+    // Enter your bank details
+    /* N.B.
+    You can’t write directly into the iframe because an iframe is not an input field - it’s a container for another HTML page.
+    To solve the problem we will use page.frameLocator(). They are the official method and recommended by Playwright to interact with elements within iframe, they more stable than  
+    page.frame(...) because it supports chaining methods such as locator().fill()
+    */
+    const cardNumberInput = page.frameLocator('iframe[title="Iframe per il numero di carta"]').locator(' input[data-fieldtype="encryptedCardNumber"]');
+    await cardNumberInput.click();
+    await cardNumberInput.fill('1234123412341234');
 
-    await page.pause();
+    await page.waitForSelector('iframe[title="Iframe per data di scadenza"]', { state: 'attached' });
+
+    const cartExpirationDateInput = page.frameLocator('iframe[title="Iframe per data di scadenza"]').locator('input[placeholder="MM/AA"]');
+
+    await cartExpirationDateInput.waitFor({ state: 'visible', timeout: 10000 });
+    await cartExpirationDateInput.click();
+    await cartExpirationDateInput.fill('1234');
+
+    await page.waitForSelector('iframe[title="Iframe per il codice di sicurezza"]', { state: 'attached' });
+
+    const cvvCodeInput = page.frameLocator('iframe[title="Iframe per il codice di sicurezza"]').locator('input[data-fieldtype="encryptedSecurityCode"]');
+    await cvvCodeInput.click();
+    await cvvCodeInput.fill('123');
+
+    const nameCart = page.locator('input[name="holderName"]');
+    await nameCart.click()
+    await nameCart.fill("Selene Palizzi")
+
+    // Click "Continua" button
+
+    page.locator('button[value="submit-payment"]').click();
+
+    // Click "Completa il pagamento" button
+
+    page.locator('button[value="place-order"]').click()
+
+    /*Here the test is interrupted because we proceed with the payment to the bank
+    for approval and closure of the order, for obvious security reasons will not proceed further*/
 })
