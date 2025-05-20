@@ -1,10 +1,14 @@
 const {test, expect} = require('@playwright/test');
 
+test.beforeEach(async ({page}) => {
+
+    page.goto("https://www.unode50.com/eu/it_IT/home");
+
+});
+
 test('Accept all cookies and login account', async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Login Test"})
     
-    await page.goto("https://www.unode50.com/eu/it_IT/home");
-
     // Accept "Accept all cookies"
     await page.locator("#onetrust-accept-btn-handler").click();
 
@@ -43,7 +47,6 @@ test('Accept all cookies and login account', async ({page}) => {
 test("make a order after login", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "make a order"})
 
-    await page.goto("https://www.unode50.com/eu/it_IT/home");
     await page.locator("#onetrust-accept-btn-handler").click();
     await page.locator("#close-popup").click();
     await page.locator("a.hidden-xs-down").click()

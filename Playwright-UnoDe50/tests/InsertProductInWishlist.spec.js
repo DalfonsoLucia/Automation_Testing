@@ -1,8 +1,13 @@
 const {test, expect} = require("@playwright/test")
 
-test.only("Insert product into Wishlist", async ({page}) => {
+test.beforeEach(async ({page}) => {
 
-    page.goto("https://www.unode50.com/eu/it_IT/home")
+    page.goto("https://www.unode50.com/eu/it_IT/home");
+
+});
+
+test.only("Insert product into Wishlist", async ({page}) => {
+    test.info().annotations.push({type: "requirements", description: "Insert product into Wishlist"})
 
     // Log in to your account
     // Accept "Accept all cookies"
@@ -36,6 +41,6 @@ test.only("Insert product into Wishlist", async ({page}) => {
     expect(page.locator('h2[class="pull-left profile-header"]')).toContainText("I miei dati personali");
 
     //Choose a product and put it in ypur Wishlist
-    
+
 });
 

@@ -1,10 +1,14 @@
 const {test, expect} = require('@playwright/test');
 
+test.beforeEach(async ({page}) => {
+
+    page.goto("https://www.unode50.com/eu/it_IT/home");
+
+});
+
 test('Accept all cookies and login account', async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Login Test"})
     
-    await page.goto("https://www.unode50.com/eu/it_IT/home");
-
     // Accept "Accept all cookies"
     await page.locator("#onetrust-accept-btn-handler").click();
 
