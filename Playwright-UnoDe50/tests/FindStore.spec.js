@@ -34,7 +34,7 @@ test.only("find store", async ({page}) => {
     // Click "Accetta tutto" button on Google
     await page.getByRole('button', { name: 'Accetta tutto' }).click();
 
-    // Click "starting point" box of Google Maps
+    // Enter your current location in the starting point box of Google Maps
     const startPoint = page.locator("input[aria-controls='sbsg50']");
     await startPoint.fill("piazza duomo milano");
     await startPoint.press('Enter');
