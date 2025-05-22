@@ -2,7 +2,7 @@ const {test, expect} = require("@playwright/test")
 
 test.beforeEach(async ({page}) => {
 
-    page.goto("https://www.unode50.com/eu/it_IT/home");
+    await page.goto("https://www.unode50.com/eu/it_IT/home");
 
 });
 
@@ -76,6 +76,5 @@ test("Insert product into Wishlist", async ({page}) => {
 
     expect(productText).toContain("Bracciale rigido con tre sfere placcate argento Sterling");
 
-    await page.pause();
 });
 

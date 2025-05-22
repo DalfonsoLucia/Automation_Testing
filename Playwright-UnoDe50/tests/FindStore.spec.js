@@ -3,11 +3,11 @@ const { start } = require("repl");
 
 test.beforeEach(async ({page}) => {
 
-    page.goto("https://www.unode50.com/eu/it_IT/home");
+    await page.goto("https://www.unode50.com/eu/it_IT/home");
 
 });
 
-test.only("find store", async ({page}) => {
+test("find store", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Find Store"})
 
     // Accept "Accept all cookies"
