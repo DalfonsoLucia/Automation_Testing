@@ -2,7 +2,9 @@
   "name": "playwright-unode50",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+     "check-case": "node check-import-case-mismatch.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
