@@ -38,6 +38,8 @@ test.only("Logout account", async ({page}) => {
     await expect(loginLink).toBeVisible();
     const userName = page.locator('#myaccount .user-message');
     await expect(userName).toHaveCount(0);
+    const userAccount = page.locator('#myaccount');
+    await expect(userAccount).toHaveCount(0);
 
     await page.pause();
 
