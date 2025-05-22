@@ -33,6 +33,7 @@ Several implementations of the same project using Playwright:
     - Playwright_TypeScript: Refactored version in TypeScript
     - Playwright_Cucumber: Includes Cucumber for BDD-style testing
     - Playwright_Azure_DevOps: Integrated with Azure DevOps for scheduled test runs.
+    - Playwright_UnoDe50: Base version using JavaScript and Playwright and it is deployed through the CI/CD tool Jenkins.
       
 All projects follow the Page Object Model (POM) and use the Page Factory pattern
 
