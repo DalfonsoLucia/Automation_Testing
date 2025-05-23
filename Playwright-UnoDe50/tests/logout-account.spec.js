@@ -7,7 +7,7 @@ test.beforeEach(async ({page}) => {
 });
 
 
-test.only("Logout account", async ({page}) => {
+test("Logout account", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Logout Test"});
 
     await page.locator("#onetrust-accept-btn-handler").click();

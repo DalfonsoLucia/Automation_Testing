@@ -2,6 +2,7 @@ const { LoginPage } = require('./LoginPage');
 const { CartPage } = require('./CartPage');
 const { LogoutPage } = require('./LogoutPage');
 const { OrderPage } = require('./OrderPage');
+const { FindStorePage } = require('./FindStorePage');
 
 class POManager {
 
@@ -12,6 +13,7 @@ class POManager {
         this.logoutPage = new LogoutPage(this.page);
         this.cartPage = new CartPage(this.page);
         this.orderPage = new OrderPage(this.page);
+        this.findStorePage = new FindStorePage(this.page);
     }
 
     getLoginPage() {
@@ -30,4 +32,9 @@ class POManager {
         return this.orderPage;
     }
 
+    getFindStorePage() {
+        return this.findStorePage;
+    }
+
 };
+module.exports = { POManager };

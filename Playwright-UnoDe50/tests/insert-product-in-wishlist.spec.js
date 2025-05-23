@@ -6,7 +6,7 @@ test.beforeEach(async ({page}) => {
 
 });
 
-test("Insert product into Wishlist", async ({page}) => {
+test.only("Insert product into Wishlist", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Insert product into Wishlist"})
 
     // Log in to your account
