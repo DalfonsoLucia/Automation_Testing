@@ -1,37 +1,36 @@
 const {test, expect} = require('@playwright/test');
+const { POManager } = require('../pageobjects/POManager')
 
 test.beforeEach(async ({page}) => {
 
-    await page.goto("https://www.unode50.com/eu/it_IT/home");
+    const pomManager = new POManager(page);
+    const loginPage = pomManager.getLoginPage();    
+    await loginPage.goto();
 
 });
-
 
 test("Logout account", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Logout Test"});
 
-    await page.locator("#onetrust-accept-btn-handler").click();
-
-    await page.locator("#close-popup").click();
-
-    await page.locator("a.hidden-xs-down").click()
+    const pomManager = new POManager(page);
+    const loginPage = pomManager.getLoginPage();
+    const logoutPage = pomManager.getLogoutPage();
+    
+    await loginPage.acceptCookie();
+    await loginPage.declinePopUpNewSubscribers();
+    await loginPage.clickAccountIcon();
 
     expect(page.locator('[aria-controls="login"]')).toHaveText("Accedi");
 
-    await page.locator("#login-form-email").fill("selene_venus_in_the_sky@outlook.it");
-    await page.locator("#login-form-password").fill("Venusinthesky89!");
-
-    await page.locator(".custom-checkbox.remember-me").click();
-
-    await page.locator("form[name='login-form'] button[type='submit']").click();
+    await loginPage.loginAccount();
 
     await expect(page.locator('h2[class="pull-left profile-header"]')).toContainText("I miei dati personali");
 
-    page.locator('a[class="logo-home"]').click();
+    await loginPage.goBackHomapage();
 
-    await page.locator("div[id='myaccount']").click();
+    await logoutPage.logIntoAccountpage();
 
-    await page.locator("a[role='menuitem'][href*='Login-Logout']").click();
+    await logoutPage.clickLogoutOption();
 
     // Verify that the disconnect was successful
     const loginLink = page.locator('a[aria-label="Accedi al tuo account"]');

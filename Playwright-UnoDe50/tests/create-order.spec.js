@@ -9,6 +9,8 @@ test.beforeEach(async ({page}) => {
 
 });
 
+//pulire codice di questo test + Order page con i commenti inseriti
+
 test("make a order after login", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "make a order"});
 
@@ -32,13 +34,20 @@ test("make a order after login", async ({page}) => {
 
     await loginPage.goBackHomapage();
 
-    await orderPage.createOrder();
+    //await orderPage.createOrder();
+    await orderPage.addProductToCart();
+    await orderPage.startCheckout();
 
-    await orderPage.insertShippingInformation();
+    //await orderPage.insertShippingInformation();
+    await orderPage.fillShippingInformation({firstName: 'Selene', 
+    lastName: 'Palizzi', 
+    address: 'Via Quintino Sella, 10', 
+    zipCode: '21052', 
+    phoneNumber: '3276131745', 
+    city: 'Busto Arsizio',
+    state: 'Lombardia'});
 
     await orderPage.executePayment();
-
-    await page.pause();
 
     /*Here the test is interrupted because we proceed with the payment to the bank
     for approval and closure of the order, for obvious security reasons will not proceed further*/

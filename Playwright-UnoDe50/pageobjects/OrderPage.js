@@ -4,12 +4,16 @@ class OrderPage {
 
     constructor(page) {
         this.page = page;
+        // Select product
         this.chooseProduct = page.locator("(//a[@id='anillos'])[1]");
-        this.selectProduct = page.getByTitle("Anello placcato argento Sterling con tre sfere di varie dimensioni, Argent");
+        //this.selectProduct = page.locator("a[href*='ANI0843_PLATEADO_color=PLATEADO']");
+        this.selectProduct = page.getByTitle('Anello placcato argento Sterling con tre sfere di varie dimensioni, Argent');
         this.sizeRing = page.locator('li[data-attr-value="15"]');
         this.addToCartButton = page.locator("button.add-to-cart").first();
         this.viewCartButton = page.locator("a[title='Visualizza carrello']");
         this.startOrder = page.locator('a[class="btn btn-primary btn-block "]');
+
+        // Shipping
         this.standardShipping = page.locator('input[value="DHL002"]');
         this.shippingName = page.locator("#shippingFirstNamedefault");
         this.shippingSurname = page.locator("#shippingLastNamedefault");
@@ -17,8 +21,11 @@ class OrderPage {
         this.shippingZipCode = page.locator("#shippingZipCodedefault");
         this.shippingPhone = page.locator("#shippingPhoneNumberdefault");
         this.shippingCityAdress = page.locator("#shippingAddressCitydefault");
+        this.stateSelectOption = page.locator('#shippingStatedefault');
         this.privacySelectedCheckbox = page.locator('label[for="acceptprivacy"]');
         this.confirmShippingButton = page.locator('button[class="btn btn-primary submit-shipping"]');
+
+        // Payment
         this.choosePaymentMethod = page.locator('li[data-method-id="AdyenComponent"]');
         this.cardNumberInputIFrame = page.frameLocator('iframe[title="Iframe per il numero di carta"]').locator(' input[data-fieldtype="encryptedCardNumber"]');
         this.cartExpirationDateInputIFrame = page.frameLocator('iframe[title="Iframe per data di scadenza"]').locator('input[placeholder="MM/AA"]');
@@ -26,14 +33,26 @@ class OrderPage {
         this.nameCard = page.locator('input[name="holderName"]');
         this.continueButton = page.locator('button[value="submit-payment"]');
         this.completeThePayment = page.locator('button[value="place-order"]');
-    }
+    };
 
-    async createOrder() {
+    async scrollToProduct(locator, maxScrolls = 10) {
+        for (let i = 0; i < maxScrolls; i++) {
+          if (await locator.first().isVisible()) return;
+          await this.page.mouse.wheel(0, 500);
+          await this.page.waitForTimeout(300);
+        }
+        throw new Error('Product not visible after scrolling');
+    };
+
+    async addProductToCart() {
        
         await this.chooseProduct.click();
-        
-        await this.selectProduct.click()
 
+        await this.scrollToProduct(this.selectProduct);
+
+        await this.selectProduct.first().click();
+        
+        await this.sizeRing.waitFor({state: 'visible'});
         await this.sizeRing.click();
 
         const button = this.addToCartButton;
@@ -45,34 +64,38 @@ class OrderPage {
         */
 
         await this.viewCartButton.click();
+    };
 
+    async startCheckout() {
         // Details order
         // Click button "Inizia l'ordine"
         await this.startOrder.click();
-    }
+    };
 
-    async insertShippingInformation() {
+    async fillShippingInformation({firstName, lastName, address, zipCode, phoneNumber, city, state}) {
         
         // Shipping side
         // Choose Standard Shipping
         await this.standardShipping.click();
         //Shipping option
-        await this.shippingName.fill("Selene");
-        await this.shippingSurname.fill("Palizzi");
-        await this.shippingAdress.fill("Via Quintino Sella, 10");
-        await this.shippingZipCode.fill("21052");
-        await this.shippingPhone.fill("3276131745");
-        await this.shippingCityAdress.fill("Busto Arsizio");
-        await this.page.selectOption('#shippingStatedefault', { value: 'Lombardia' });
+        await this.shippingName.fill(firstName);
+        await this.shippingSurname.fill(lastName);
+        await this.shippingAdress.fill(address);
+        await this.shippingZipCode.fill(zipCode);
+        await this.shippingPhone.fill(phoneNumber);
+        await this.shippingCityAdress.fill(city);
+        //await this.page.selectOption('#shippingStatedefault', { value: 'Lombardia' });
+        await this.stateSelectOption.selectOption({value: state})
         const selected = await this.page.locator("#shippingStatedefault").inputValue();
         // Verify province selected = Lombardia
         expect(selected).toBe('Lombardia');
         
-        const privacyCheckbox = this.privacySelectedCheckbox;
-        await privacyCheckbox.click();
+        //const privacyCheckbox = this.privacySelectedCheckbox;
+        //await privacyCheckbox.click();
+        await this.privacySelectedCheckbox.click();
 
         await this.confirmShippingButton.click();
-    }
+    };
 
     async executePayment() {
 
@@ -115,7 +138,7 @@ class OrderPage {
         // Click "Completa il pagamento" button
 
         await this.completeThePayment.click();
-        }
+  };
 
 }
 module.exports = { OrderPage };

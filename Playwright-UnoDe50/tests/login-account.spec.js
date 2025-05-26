@@ -23,7 +23,6 @@ test('Accept all cookies and login account', async ({page}) => {
 
     // Click Account icon
     //await page.getByLabel("Accedi al tuo account").click(); //Possiamo usare 'getByLabel("...") di Playwright o .locator("...")
-    //await page.locator("a.hidden-xs-down").click()
     await loginPage.clickAccountIcon();
 
     /*const logInTab = page.locator('[aria-controls="login"]')

@@ -12,6 +12,7 @@ class LoginPage {
         this.rememberCheckbox = page.locator(".custom-checkbox.remember-me");
         this.accessButton = page.locator("form[name='login-form'] button[type='submit']");
         this.logo = page.locator('a[class="logo-home"]');
+
     }
 
     async goto() {
@@ -42,7 +43,6 @@ class LoginPage {
     async goBackHomapage() {
         await this.logo.click();
     }
-
 }
 module.exports = { LoginPage };
 
