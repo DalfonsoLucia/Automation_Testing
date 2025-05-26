@@ -11,19 +11,25 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-        bat 'npm ci'
+        dir('Playwright-UnoDe50') {
+          bat 'npm ci'
+        }
       }
     }
 
     stage('Install Playwright') {
       steps {
-        bat 'npx playwright install --with-deps'
+        dir('Playwright-UnoDe50') {
+          bat 'npx playwright install --with-deps'
+        }
       }
     }
 
     stage('Run Playwright tests') {
       steps {
-        bat 'npx playwright test'
+        dir('Playwright-UnoDe50') {
+          bat 'npx playwright test'
+        }
       }
     }
   }
