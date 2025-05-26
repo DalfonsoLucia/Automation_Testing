@@ -35,9 +35,9 @@ pipeline {
         dir('Playwright-UnoDe50') {
           script {
             if (isUnix()) {
-              sh 'npx playwright test'
+              sh 'npx playwright test --reporter=html'
             } else {
-              bat 'npx playwright test'
+              bat 'npx playwright test --reporter=html'
             }
           }
         }
@@ -47,8 +47,8 @@ pipeline {
 
   post {
   always {
-    archiveArtifacts artifacts: 'Playwright-UnoDe50/playwright-report/**', allowEmptyArchive: true
-    publishHTML(target: [
+    //archiveArtifacts artifacts: 'Playwright-UnoDe50/playwright-report/**', allowEmptyArchive: true
+     publishHTML(target: [
       allowMissing: false,
       alwaysLinkToLastBuild: true,
       keepAll: true,
@@ -57,5 +57,4 @@ pipeline {
       reportName: 'Playwright Report'
     ])
   }
-}
 }
