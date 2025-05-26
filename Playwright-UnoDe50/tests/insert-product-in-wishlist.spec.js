@@ -43,7 +43,7 @@ test("Insert product into Wishlist", async ({page}) => {
     console.log(text);
 
     // Verify the login made successfully
-    await expect(text).toContain("I miei dati personali");
+    expect(text).toContain("I miei dati personali");
 
     await loginPage.goBackHomapage();
 
