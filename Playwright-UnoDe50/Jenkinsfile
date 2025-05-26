@@ -2,21 +2,28 @@ pipeline {
   agent any
 
   stages {
+    stage('Check env') {
+      steps {
+        bat 'where node'
+        bat 'where npx'
+      }
+    }
+
     stage('Install dependencies') {
       steps {
-        sh 'npm ci'
+        bat 'npm ci'
       }
     }
 
     stage('Install Playwright') {
       steps {
-        sh 'npx playwright install --with-deps'
+        bat 'npx playwright install --with-deps'
       }
     }
 
     stage('Run Playwright tests') {
       steps {
-        sh 'npx playwright test'
+        bat 'npx playwright test'
       }
     }
   }
