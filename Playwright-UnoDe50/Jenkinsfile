@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Install dependencies') {
+      steps {
+        dir('Playwright-UnoDe50') {
+          sh 'npm ci'
+        }
+      }
+    }
+
+    stage('Install Playwright binaries') {
+      steps {
+        dir('Playwright-UnoDe50') {
+          sh 'npx playwright install --with-deps'
+        }
+      }
+    }
+
+    stage('Run Playwright tests') {
+      steps {
+        dir('Playwright-UnoDe50') {
+          sh 'npx playwright test'
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      archiveArtifacts artifacts: 'Playwright-UnoDe50/playwright-report/**', allowEmptyArchive: true
+      // opzionale: pubblicare un report HTML se hai installato l'HTML Publisher plugin
+      // publishHTML([reportDir: 'Playwright-UnoDe50/playwright-report', reportFiles: 'index.html', reportName: 'Playwright Report'])
+    }
+  }
+}
