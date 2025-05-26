@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-     "check-case": "node check-import-case-mismatch.js"
+     "check-case": "node check-import-case-mismatch.js",
+     "test": "playwright test"
   },
   "keywords": [],
   "author": "",
