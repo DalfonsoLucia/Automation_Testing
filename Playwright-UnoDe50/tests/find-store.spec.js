@@ -22,10 +22,7 @@ test("find store", async ({page}) => {
     // Close pop up "new subscribers"
     await loginPage.declinePopUpNewSubscribers();
 
-    //
     await findStorePage.findDesiredStore();
     
-
-
     // Follow the road indicated on Google Maps to get to the store
 })

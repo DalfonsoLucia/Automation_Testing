@@ -9,7 +9,7 @@ test.beforeEach(async ({page}) => {
 
 });
 
-test.only("search product", async ({page}) =>{
+test("search product", async ({page}) =>{
     test.info().annotations.push({type: "requirements", description: "search product"});
 
     const pomManager = new POManager(page);
@@ -43,9 +43,4 @@ test.only("search product", async ({page}) =>{
     expect(textProductWishlist).toContain("Anello sfere placcato argento Sterling");
     // expect(page.locator("div[class*='pid-ANI0572MTL0000L']")).toContainText("Anello sfere placcato argento Sterling");
     expect(textProductWishlist).toContain('€ 89,00');
-    await page.pause();
-
-
-
-
-})
+});

@@ -6,7 +6,7 @@ test.beforeEach(async ({page}) => {
     const pomManager = new POManager(page);
     const loginPage = pomManager.getLoginPage();    
     await loginPage.goto();
-
+    
 });
 
 test("Logout account", async ({page}) => {
