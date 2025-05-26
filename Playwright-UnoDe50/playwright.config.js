@@ -10,7 +10,7 @@ module.exports = defineConfig({
   expect: {
     timeout: 5000
   },
-  reporter: 'html',
+  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     browserName: 'chromium', //webkit per Safari e firefox per Firefox

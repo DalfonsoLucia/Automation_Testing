@@ -35,9 +35,9 @@ pipeline {
         dir('Playwright-UnoDe50') {
           script {
             if (isUnix()) {
-              sh 'npx playwright test --reporter=html'
+              sh 'npx playwright test'
             } else {
-              bat 'npx playwright test --reporter=html'
+              bat 'npx playwright test'
             }
           }
         }
