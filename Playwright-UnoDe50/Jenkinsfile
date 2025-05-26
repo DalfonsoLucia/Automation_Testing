@@ -47,14 +47,15 @@ pipeline {
 
   post {
   always {
-    //archiveArtifacts artifacts: 'Playwright-UnoDe50/playwright-report/**', allowEmptyArchive: true
-     publishHTML(target: [
-      allowMissing: false,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'Playwright-UnoDe50/playwright-report',
+    def buildReportDir = "Playwright-UnoDe50/playwright-report-${env.BUILD_NUMBER}"
+    bat "xcopy /E /I /Y Playwright-UnoDe50\\playwright-report ${buildReportDir}"
+    publishHTML(target: [
+      reportDir: "${buildReportDir}",
       reportFiles: 'index.html',
-      reportName: 'Playwright Report'
+      reportName: "Playwright Report - Build ${env.BUILD_NUMBER}",
+      keepAll: true,
+      alwaysLinkToLastBuild: true,
+      allowMissing: true
     ])
   }
 }
