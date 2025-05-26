@@ -31,7 +31,7 @@ test("search product", async ({page}) =>{
     await searchPage.addFavProductToWishlist();
 
     // Verify if product just inserted is present in wishlist
-    searchPage.checkProductIntoWishlist();
+    await searchPage.checkProductIntoWishlist();
 
     await wishlistPage.backToHomepage();
     await searchPage.clickForWishlistPage();

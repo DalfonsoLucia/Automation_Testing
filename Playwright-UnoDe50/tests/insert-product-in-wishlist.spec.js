@@ -33,7 +33,7 @@ test("Insert product into Wishlist", async ({page}) => {
     console.log(logInText)*/
 
     // Check that we are in the login page 
-    expect(page.locator('[aria-controls="login"]')).toHaveText("Accedi");
+    await expect(page.locator('[aria-controls="login"]')).toHaveText("Accedi");
 
     // Login Account
     await loginPage.loginAccount();
@@ -43,7 +43,7 @@ test("Insert product into Wishlist", async ({page}) => {
     console.log(text);
 
     // Verify the login made successfully
-    expect(text).toContain("I miei dati personali");
+    await expect(text).toContain("I miei dati personali");
 
     await loginPage.goBackHomapage();
 

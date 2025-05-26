@@ -6,7 +6,7 @@ test.beforeEach(async ({page}) => {
     const pomManager = new POManager(page);
     const loginPage = pomManager.getLoginPage();    
     await loginPage.goto();
-    
+
 });
 
 test("Logout account", async ({page}) => {
@@ -20,7 +20,7 @@ test("Logout account", async ({page}) => {
     await loginPage.declinePopUpNewSubscribers();
     await loginPage.clickAccountIcon();
 
-    expect(page.locator('[aria-controls="login"]')).toHaveText("Accedi");
+    await expect(page.locator('[aria-controls="login"]')).toHaveText("Accedi");
 
     await loginPage.loginAccount();
 
