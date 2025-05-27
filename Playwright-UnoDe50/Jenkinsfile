@@ -48,13 +48,13 @@ pipeline {
   post {
   always {
     bat "xcopy /E /I /Y Playwright-UnoDe50\\playwright-report Playwright-UnoDe50\\playwright-report-${env.BUILD_NUMBER}"
-publishHTML(target: [
-  reportDir: "Playwright-UnoDe50/playwright-report-${env.BUILD_NUMBER}",
-  reportFiles: 'index.html',
-  reportName: "Playwright Report - Build ${env.BUILD_NUMBER}",
-  keepAll: true,
-  alwaysLinkToLastBuild: true,
-  allowMissing: true
+    publishHTML(target: [
+      reportDir: "Playwright-UnoDe50/playwright-report-${env.BUILD_NUMBER}",
+      reportFiles: 'index.html',
+      reportName: "Playwright Report - Build ${env.BUILD_NUMBER}",
+      keepAll: true,
+      alwaysLinkToLastBuild: true,
+      allowMissing: true
 ])
 }
 }
