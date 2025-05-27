@@ -55,7 +55,7 @@ pipeline {
       keepAll: true,
       alwaysLinkToLastBuild: true,
       allowMissing: true
-])
-}
-}
+      ])
+    }
+  }
 }

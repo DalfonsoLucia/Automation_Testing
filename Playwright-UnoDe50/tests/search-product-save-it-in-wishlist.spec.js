@@ -4,13 +4,15 @@ const { POManager } = require('../pageobjects/POManager')
 test.beforeEach(async ({page}) => {
 
     const pomManager = new POManager(page);
-    const loginPage = pomManager.getLoginPage();    
+    const loginPage = pomManager.getLoginPage();
+    const wishlistPage = pomManager.getWishlistPage();
     await loginPage.goto();
+    await wishlistPage.clearWishlist();
 
 });
 
-test("search product", async ({page}) =>{
-    test.info().annotations.push({type: "requirements", description: "search product"});
+test("search product and save it in wishlist", async ({page}) =>{
+    test.info().annotations.push({type: "requirements", description: "search for the product and save it in the wish list as a reminder"});
 
     const pomManager = new POManager(page);
     const loginPage = pomManager.getLoginPage();
@@ -30,6 +32,8 @@ test("search product", async ({page}) =>{
     // Add favorite product to wishlist
     await searchPage.addFavProductToWishlist();
 
+    //await page.pause();
+
     // Verify if product just inserted is present in wishlist
     await searchPage.checkProductIntoWishlist();
 
@@ -43,4 +47,4 @@ test("search product", async ({page}) =>{
     expect(textProductWishlist).toContain("Anello sfere placcato argento Sterling");
     // expect(page.locator("div[class*='pid-ANI0572MTL0000L']")).toContainText("Anello sfere placcato argento Sterling");
     expect(textProductWishlist).toContain('€ 89,00');
-});
+}, 60000);

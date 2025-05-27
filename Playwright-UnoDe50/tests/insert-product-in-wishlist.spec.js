@@ -4,10 +4,14 @@ const { POManager } = require("../pageobjects/POManager");
 test.beforeEach(async ({page}) => {
 
     const pomManager = new POManager(page);
-    const loginPage = pomManager.getLoginPage();    
+    const loginPage = pomManager.getLoginPage();
+    const wishlistPage = pomManager.getWishlistPage();
     await loginPage.goto();
+    await wishlistPage.clearWishlist();
 
 });
+
+console.log('Test START');
 
 test("Insert product into Wishlist", async ({page}) => {
     test.info().annotations.push({type: "requirements", description: "Insert product into Wishlist"});
@@ -53,6 +57,8 @@ test("Insert product into Wishlist", async ({page}) => {
     // Click button "Add to wishlist"
     await wishlistPage.addProductToWishlist();
 
+    //await page.pause();
+    
     // Come back to Homepage
     await wishlistPage.backToHomepage();
     
@@ -73,5 +79,6 @@ test("Insert product into Wishlist", async ({page}) => {
     console.log(productText);
 
     expect(productText).toContain("Bracciale rigido con tre sfere placcate argento Sterling");
-});
+    console.log('Test END');
+}, 60000);
 
